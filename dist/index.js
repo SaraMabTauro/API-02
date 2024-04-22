@@ -31,7 +31,7 @@ const express_1 = __importDefault(require("express"));
 const morgan_1 = __importDefault(require("morgan"));
 const signale_1 = require("signale");
 const dotenv = __importStar(require("dotenv"));
-const cors_1 = __importDefault(require("cors")); // Importar cors
+const cors_1 = __importDefault(require("cors"));
 const FacturaRouter_1 = require("./facturas/infraestructure/routes/FacturaRouter");
 const app = (0, express_1.default)();
 dotenv.config();

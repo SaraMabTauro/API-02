@@ -2,7 +2,8 @@ import express from 'express';
 import morgan from 'morgan';
 import { Signale } from 'signale';
 import * as dotenv from 'dotenv';
-import cors from 'cors'; // Importar cors
+import cors from 'cors'; 
+
 
 import { facturaRouter } from './facturas/infraestructure/routes/FacturaRouter';
 const app = express();
