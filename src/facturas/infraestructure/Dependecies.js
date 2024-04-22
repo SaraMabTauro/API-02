@@ -1,0 +1,15 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.createFacturaController = exports.createFacturaUseCase = exports.serviceNotificationUseCase = exports.servicesNotification = exports.mysqlFacturaRepository = void 0;
+const CreateFacturaUseCase_1 = require("../aplication/methodsFactura/CreateFacturaUseCase");
+const CreateFacturaController_1 = require("./controllers/CreateFacturaController");
+const MysqlFacturaRepository_1 = require("./repository/MysqlFacturaRepository");
+const NotificacionNewFactura_1 = require("./servicesRabbit/NotificacionNewFactura");
+const NotificacionNewFactura_2 = require("../aplication/services/NotificacionNewFactura");
+const socket_io_1 = require("./services/socket.io");
+const socketIO = new socket_io_1.SocketIO();
+exports.mysqlFacturaRepository = new MysqlFacturaRepository_1.MysqlFacturaRepository();
+exports.servicesNotification = new NotificacionNewFactura_1.NotificacionNewFactura();
+exports.serviceNotificationUseCase = new NotificacionNewFactura_2.NotificacionFacturaUseCase(exports.servicesNotification);
+exports.createFacturaUseCase = new CreateFacturaUseCase_1.CreateFacturaUseCase(exports.mysqlFacturaRepository, exports.serviceNotificationUseCase, socketIO);
+exports.createFacturaController = new CreateFacturaController_1.CreateFactureController(exports.createFacturaUseCase);
